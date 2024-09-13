@@ -1,0 +1,18 @@
+name: pen-test
+
+on:
+  issue_comment:
+    types: [created]
+
+
+jobs:
+  pentest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - uses: addnab/docker-run-action@v3
+        with:
+          image: owasp/nettacker:latest
+          run: |
+            python nettacker.py -i lossexpress.com -s -m all
