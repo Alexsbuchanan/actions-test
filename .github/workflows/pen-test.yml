@@ -14,5 +14,4 @@ jobs:
         with:
           image: owasp/nettacker:latest
           run: |
-            python -m pip install --upgrade pip &&
-            python nettacker.py -i lossexpress.com -s -m all
+            poetry run python nettacker.py -i lossexpress.com -s -m all
